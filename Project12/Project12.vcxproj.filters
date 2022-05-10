@@ -1,2 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" />
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Core">
+      <UniqueIdentifier>{84a3acb4-a2b2-41f0-a997-933a0d3be543}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Ent">
+      <UniqueIdentifier>{2a699ea7-36a5-429c-84df-237bad3c08d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Lib">
+      <UniqueIdentifier>{ac27f2a4-2767-40ed-bb54-fbee92517efa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Model">
+      <UniqueIdentifier>{99ed979a-a345-4d9f-9c3b-3e2fa6c72014}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI">
+      <UniqueIdentifier>{57acc733-1498-49ab-b37f-a06e90ab887f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UI\Menu">
+      <UniqueIdentifier>{5fad3432-d0e8-41ac-83cc-b958d5d606d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="main">
+      <UniqueIdentifier>{1335e863-e623-4de3-b749-f9c52cd7f470}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Ent\Game">
+      <UniqueIdentifier>{380cdf26-cc99-4b2a-a5c0-8ca8620c3673}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UI\Menu\Menu.h">
+      <Filter>UI\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Lib\Lib.h">
+      <Filter>Core\Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="Core\Ent\Game\game.h">
+      <Filter>Core\Ent\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main\main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+    <ClCompile Include="Core\Ent\Game\game.cpp">
+      <Filter>Core\Ent\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
