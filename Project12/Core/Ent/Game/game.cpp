@@ -1,24 +1,80 @@
 #include"game.h"
-void manual()
+
+void computer(int** field)
+{
+}
+
+void human(int **field)
 {
 
 }
 
-void computerom()
+int checks(int**& field, int a, int size1)
 {
+	int t;
+	t = (size1 * size1) - 1;
+	bool prov = false;
+	do {
 
+		if (a > t)
+		{
+			prov = false;
+			cout << "ERROR!";
+			cin >> a;
+		}
+		else
+			prov = true;
+		for (int p = 0; p < size1; p++)
+		{
+			if (prov == false)
+				break;
+			for (int k = 0; k < size1; k++)
+			{
+				if (a == field[p][k])
+				{
+					prov = false;
+					cout << "ERROR!";
+					cin >> a;
+					break;
+				}
+				else
+					prov = true;
+			}
+		}
+	} while (prov != true);
+	return a;
 }
 
-void computer()
+//измени вывод
+void manual(int** &field, int size1)
 {
+	int y = 0;
+	for (int i = 0; i < size1; i++)
+	{
+		for (int j = 0; j < size1; j++)
+		{
+			cout << "-------------" << endl;
+			for (int y = 0; y < size1; y++)
+			{
+				cout << "| ";
+				for (int r = 0; r < size1; r++)
+					cout << field[y][r] << " | ";
+				cout << endl;
+			}
+			cout << "-------------" << endl;
+			cin >> y;
+			field[i][j] = checks(field, y, size1);
+			system("cls");
+		}
+	}
 	int a, b = 0;
 	const int size = 2;
 	string arrow[size] = { "-------", " " };
 	do
 	{
-		cout << "\t\tPlacement of spots\n";
+		cout << "\t\tChoice of game mode\n";
 		cout << "\t\t-------------------\n";
-		cout << "\t\tManual\t\tComputer\n";
+		cout << "\t\tHuman\t\tComputer\n";
 
 		for (int i = 0; i < size; i++)
 			cout << "\t\t" << arrow[i];
@@ -59,13 +115,13 @@ void computer()
 		case(1):
 		{
 			system("cls");
-			manual();
+			human(field);
 			break;
 		}
 		case(2):
 		{
 			system("cls");
-			computerom();
+			computer(field);
 			break;
 		}
 		}
@@ -73,16 +129,32 @@ void computer()
 	} while (a != 0);
 }
 
-void human()
+void computerom(int** &field, int size1)
 {
+	srand(time(NULL));
+	int t; 
+	t = (size1 * size1) - 1;
+	for (int i = 0; i < size1; i++)
+	{
+		for (int j = 0; j < size1; j++)
+			field[i][j] = rand() % t;
+	}
+	/*for (int i = 0; i < size1; i++)
+	{
+		for (int j = 0; j < size1; j++)
+		{
+			cout << field[i][j] << " ";
+		}
+		cout << endl;
+	}*/
 	int a, b = 0;
 	const int size = 2;
 	string arrow[size] = { "-------", " " };
 	do
 	{
-		cout << "\t\tPlacement of spots\n";
+		cout << "\t\tChoice of game mode\n";
 		cout << "\t\t-------------------\n";
-		cout << "\t\tManual\t\tComputer\n";
+		cout << "\t\tHuman\t\tComputer\n";
 
 		for (int i = 0; i < size; i++)
 			cout << "\t\t" << arrow[i];
@@ -123,13 +195,13 @@ void human()
 		case(1):
 		{
 			system("cls");
-			manual();
+			human(field);
 			break;
 		}
 		case(2):
 		{
 			system("cls");
-			computerom();
+			computer(field);
 			break;
 		}
 		}
@@ -139,14 +211,23 @@ void human()
 
 void three_x_three()
 {
+	int size1 = 3;
+	int **field = new int*[size1];
+	for (int i = 0; i < size1; i++)
+		field[i] = new int[size1];
+	for (int i = 0; i < size1; i++)
+	{
+		for (int j = 0; j < size1; j++)
+			field[i][j] = 0;
+	}
 	int a, b = 0;
 	const int size = 2;
 	string arrow[size] = { "-------", " " };
 	do
 	{
-		cout << "\t\tChoice of game mode\n";
+		cout << "\t\tPlacement of spots\n";
 		cout << "\t\t-------------------\n";
-		cout << "\t\tHuman\t\tComputer\n";
+		cout << "\t\tManual\t\tComputer\n";
 
 		for (int i = 0; i < size; i++)
 			cout << "\t\t" << arrow[i];
@@ -187,13 +268,13 @@ void three_x_three()
 		case(1):
 		{
 			system("cls");
-			human();
+			manual(field, size1);
 			break;
 		}
 		case(2):
 		{
 			system("cls");
-			computer();
+			computerom(field, size1);
 			break;
 		}
 		}
@@ -203,20 +284,24 @@ void three_x_three()
 
 void four_x_four()
 {
-
-
-
-
-
-
+	int size1 = 4;
+	int** field = new int* [size1];
+	for (int i = 0; i < size1; i++)
+		field[i] = new int[size1];
+	for (int i = 0; i < size1; i++)
+	{
+		for (int j = 0; j < size1; j++)
+			field[i][j] = 0;
+	}
 	int a, b = 0;
 	const int size = 2;
 	string arrow[size] = { "-------", " " };
 	do
 	{
-		cout << "\t\tChoice of game mode\n";
+		cout << "\t\tPlacement of spots\n";
 		cout << "\t\t-------------------\n";
-		cout << "\t\tHuman\t\tComputer\n";
+		cout << "\t\tManual\t\tComputer\n";
+		
 
 		for (int i = 0; i < size; i++)
 			cout << "\t\t" << arrow[i];
@@ -257,27 +342,16 @@ void four_x_four()
 		case(1):
 		{
 			system("cls");
-			human();
+			manual(field, size1);
 			break;
 		}
 		case(2):
 		{
 			system("cls");
-			computer();
+			computerom(field, size1);
 			break;
 		}
 		}
 		system("cls");
 	} while (a != 0);
-
-
-
-
-
-
-
-
-
-
-
 }

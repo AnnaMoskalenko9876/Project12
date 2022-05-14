@@ -15,10 +15,7 @@ void menu()
 		for (int i = 0; i < size; i++)
 			cout << "\t\t" << arrow[i];
 		cout << endl;
-
-
 		a = _getch();
-
 		for (int i = 0; i < size; i++)
 		{
 			if (a == 77 && i + 1 < 2)
