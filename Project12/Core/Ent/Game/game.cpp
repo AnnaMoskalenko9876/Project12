@@ -1,15 +1,64 @@
 #include"game.h"
 
-void computer(int** field)
-{
-}
-
-void human(int **field)
+void computer(int**& field)
 {
 
 }
+//сделай границы
+void human(int**& field, int size1)
+{
+	int t;
+	bool win = false;
+	do
+	{
+		system("cls");
+		cout << "\t\t-------------" << endl;
+		for (int y = 0; y < size1; y++)
+		{
+			cout << "\t\t| ";
+			for (int r = 0; r < size1; r++)
+				cout << field[y][r] << " | ";
+			cout << endl;
+		}
+		cout << "\t\t-------------" << endl;
+		t = _getch();
+		cout << t;
+		for (int y = 0; y < size1; y++)
+		{
+			for (int r = 0; r < size1; r++)
+			{
+				if (t == 119)
+				{
+					if (field[y][r] == 0)
+						swap(field[y][r], field[y - 1][r]);
+				}
+				else if (t == 115)
+				{
+					if (field[y][r] == 0)
+						swap(field[y][r], field[y + 1][r]);
+				}
+				else if (t == 97)
+				{
+					if (field[y][r] == 0)
+						swap(field[y][r], field[y][r - 1]);
+				}
+				else if (t == 100)
+				{
+					if (field[y][r] == 0)
+						swap(field[y][r], field[y][r + 1]);
+				}
+			}
+		}
 
-int checks(int**& field, int a, int size1)
+
+
+
+	} while (win != true);
+
+
+}
+
+int checks(int** &field, int a, int size1)
 {
 	int t;
 	t = (size1 * size1) - 1;
@@ -53,15 +102,17 @@ void manual(int** &field, int size1)
 	{
 		for (int j = 0; j < size1; j++)
 		{
-			cout << "-------------" << endl;
+			if (i == 2 && j == 2)
+				break;
+			cout << "\t\t-------------" << endl;
 			for (int y = 0; y < size1; y++)
 			{
-				cout << "| ";
+				cout << "\t\t| ";
 				for (int r = 0; r < size1; r++)
 					cout << field[y][r] << " | ";
 				cout << endl;
 			}
-			cout << "-------------" << endl;
+			cout << "\t\t-------------" << endl;
 			cin >> y;
 			field[i][j] = checks(field, y, size1);
 			system("cls");
@@ -115,7 +166,7 @@ void manual(int** &field, int size1)
 		case(1):
 		{
 			system("cls");
-			human(field);
+			human(field, size1);
 			break;
 		}
 		case(2):
@@ -195,7 +246,7 @@ void computerom(int** &field, int size1)
 		case(1):
 		{
 			system("cls");
-			human(field);
+			human(field, size1);
 			break;
 		}
 		case(2):
@@ -212,7 +263,7 @@ void computerom(int** &field, int size1)
 void three_x_three()
 {
 	int size1 = 3;
-	int **field = new int*[size1];
+	int**field = new int*[size1];
 	for (int i = 0; i < size1; i++)
 		field[i] = new int[size1];
 	for (int i = 0; i < size1; i++)
