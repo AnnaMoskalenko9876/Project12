@@ -29,29 +29,26 @@ void human(int**& field, int size1)
 			{
 				if (t == 119)
 				{
-					if (field[y][r] == 0)
+					if (field[y][r] == 0 && y != 0)
 						swap(field[y][r], field[y - 1][r]);
 				}
 				else if (t == 115)
 				{
-					if (field[y][r] == 0)
+					if (field[y][r] == 0 && y != size1 - 1)
 						swap(field[y][r], field[y + 1][r]);
 				}
 				else if (t == 97)
 				{
-					if (field[y][r] == 0)
+					if (field[y][r] == 0 && r != 0)
 						swap(field[y][r], field[y][r - 1]);
 				}
 				else if (t == 100)
 				{
-					if (field[y][r] == 0)
+					if (field[y][r] == 0 && r != size1 - 1)
 						swap(field[y][r], field[y][r + 1]);
 				}
 			}
 		}
-
-
-
 
 	} while (win != true);
 
