@@ -1,6 +1,35 @@
 #include"game.h"
+void print(int**& field, int size1)
+{
+	if (size1 == 3)
+	{
+		cout << "\t\t-------------------" << endl;
+		for (int y = 0; y < size1; y++)
+		{
+			cout << "\t\t|" << setw(3);
+			for (int r = 0; r < size1; r++)
+				cout << field[y][r] << setw(3) << "|" << setw(3);
+			cout << endl;
+		}
+		cout << "\t\t-------------------" << endl;
+	}
+	else if (size1 == 4)
+	{
+		cout << "\t\t-------------------------" << endl;
+		for (int y = 0; y < size1; y++)
+		{
+			cout << "\t\t|" << setw(3);
+			for (int r = 0; r < size1; r++)
+				cout << field[y][r] << setw(3) << "|" << setw(3);
+			cout << endl;
+		}
+		cout << "\t\t-------------------------" << endl;
+	}
+}
 
-void computer(int**& field)
+
+
+void computer(int**& field, int size1)
 {
 
 }
@@ -9,43 +38,55 @@ void human(int**& field, int size1)
 {
 	int t;
 	bool win = false;
+	bool a = false;
 	do
 	{
 		system("cls");
-		cout << "\t\t-------------" << endl;
-		for (int y = 0; y < size1; y++)
-		{
-			cout << "\t\t| ";
-			for (int r = 0; r < size1; r++)
-				cout << field[y][r] << " | ";
-			cout << endl;
-		}
-		cout << "\t\t-------------" << endl;
+		print(field, size1);
 		t = _getch();
 		cout << t;
+		a = false;
 		for (int y = 0; y < size1; y++)
 		{
+			if (a == true)
+				break;
 			for (int r = 0; r < size1; r++)
 			{
 				if (t == 119)
 				{
 					if (field[y][r] == 0 && y != 0)
+					{
+						a = true;
 						swap(field[y][r], field[y - 1][r]);
+						break;
+					}
 				}
 				else if (t == 115)
 				{
 					if (field[y][r] == 0 && y != size1 - 1)
+					{
+						a = true;
 						swap(field[y][r], field[y + 1][r]);
+						break;
+					}
 				}
 				else if (t == 97)
 				{
 					if (field[y][r] == 0 && r != 0)
+					{
+						a = true;
 						swap(field[y][r], field[y][r - 1]);
+						break;
+					}
 				}
 				else if (t == 100)
 				{
 					if (field[y][r] == 0 && r != size1 - 1)
+					{
+						a = true;
 						swap(field[y][r], field[y][r + 1]);
+						break;
+					}
 				}
 			}
 		}
@@ -99,17 +140,9 @@ void manual(int** &field, int size1)
 	{
 		for (int j = 0; j < size1; j++)
 		{
-			if (i == 2 && j == 2)
+			if (i == size1 - 1 && j == size1 - 1)
 				break;
-			cout << "\t\t-------------" << endl;
-			for (int y = 0; y < size1; y++)
-			{
-				cout << "\t\t| ";
-				for (int r = 0; r < size1; r++)
-					cout << field[y][r] << " | ";
-				cout << endl;
-			}
-			cout << "\t\t-------------" << endl;
+			print(field, size1);
 			cin >> y;
 			field[i][j] = checks(field, y, size1);
 			system("cls");
@@ -169,7 +202,7 @@ void manual(int** &field, int size1)
 		case(2):
 		{
 			system("cls");
-			computer(field);
+			computer(field, size1);
 			break;
 		}
 		}
@@ -179,21 +212,34 @@ void manual(int** &field, int size1)
 
 void computerom(int** &field, int size1)
 {
+	/*int num;
+	bool u = true;
 	srand(time(NULL));
 	int t; 
 	t = (size1 * size1) - 1;
 	for (int i = 0; i < size1; i++)
 	{
 		for (int j = 0; j < size1; j++)
-			field[i][j] = rand() % t;
-	}
-	/*for (int i = 0; i < size1; i++)
-	{
-		for (int j = 0; j < size1; j++)
 		{
-			cout << field[i][j] << " ";
+			do
+			{
+				num = rand() % t;
+				for (int p = 0; p < size1; p++)
+				{
+					for (int e = 0; e < size1; e++)
+					{
+						if (field[p][e] == num)
+						{
+							u = false;
+							break;
+						}
+					}
+					if (u == false)
+						break;
+				}
+			} while (u != true);
+			field[i][j] = num;
 		}
-		cout << endl;
 	}*/
 	int a, b = 0;
 	const int size = 2;
@@ -249,7 +295,7 @@ void computerom(int** &field, int size1)
 		case(2):
 		{
 			system("cls");
-			computer(field);
+			computer(field, size1);
 			break;
 		}
 		}
