@@ -96,46 +96,76 @@ void human(int**& field, int size1)
 
 }
 
-int checks(int** &field, int a, int size1)
+int checks(int** &field, int a, int size1, bool chec)
 {
 	int t;
 	t = (size1 * size1) - 1;
 	bool prov = false;
 	do {
-
-		if (a > t)
+		if (chec == true)
 		{
-			prov = false;
-			cout << "ERROR!";
-			cin >> a;
-		}
-		else
-			prov = true;
-		for (int p = 0; p < size1; p++)
-		{
-			if (prov == false)
-				break;
-			for (int k = 0; k < size1; k++)
+			if (a > t)
 			{
-				if (a == field[p][k])
-				{
-					prov = false;
-					cout << "ERROR!";
-					cin >> a;
+				prov = false;
+				cout << "ERROR!";
+				cin >> a;
+			}
+			else
+				prov = true;
+
+			for (int p = 0; p < size1; p++)
+			{
+				if (prov == false)
 					break;
+				for (int k = 0; k < size1; k++)
+				{
+					if (a == field[p][k])
+					{
+						prov = false;
+						cout << "ERROR!";
+						cin >> a;
+						break;
+					}
+					else
+						prov = true;
 				}
-				else
-					prov = true;
+			}
+		}
+		else if (chec == false)
+		{
+			if (a > t)
+			{
+				prov = false;
+				a = rand() % t + 1;
+			}
+			else
+				prov = true;
+
+			for (int p = 0; p < size1; p++)
+			{
+				if (prov == false)
+					break;
+				for (int k = 0; k < size1; k++)
+				{
+					if (a == field[p][k])
+					{
+						prov = false;
+						a = rand() % t + 1;
+						break;
+					}
+					else
+						prov = true;
+				}
 			}
 		}
 	} while (prov != true);
 	return a;
 }
 
-//измени вывод
 void manual(int** &field, int size1)
 {
 	int y = 0;
+	bool chec = true;
 	for (int i = 0; i < size1; i++)
 	{
 		for (int j = 0; j < size1; j++)
@@ -144,7 +174,7 @@ void manual(int** &field, int size1)
 				break;
 			print(field, size1);
 			cin >> y;
-			field[i][j] = checks(field, y, size1);
+			field[i][j] = checks(field, y, size1, chec);
 			system("cls");
 		}
 	}
@@ -212,8 +242,8 @@ void manual(int** &field, int size1)
 
 void computerom(int** &field, int size1)
 {
-	/*int num;
-	bool u = true;
+	int num;
+	bool u = true, chec = false;
 	srand(time(NULL));
 	int t; 
 	t = (size1 * size1) - 1;
@@ -221,26 +251,14 @@ void computerom(int** &field, int size1)
 	{
 		for (int j = 0; j < size1; j++)
 		{
-			do
-			{
-				num = rand() % t;
-				for (int p = 0; p < size1; p++)
-				{
-					for (int e = 0; e < size1; e++)
-					{
-						if (field[p][e] == num)
-						{
-							u = false;
-							break;
-						}
-					}
-					if (u == false)
-						break;
-				}
-			} while (u != true);
-			field[i][j] = num;
+			if (i == size1 - 1 && j == size1 - 1)
+				break;
+			print(field, size1);
+			num = rand() % t + 1;
+			field[i][j] = checks(field, num, size1, chec);
+			system("cls");
 		}
-	}*/
+	}
 	int a, b = 0;
 	const int size = 2;
 	string arrow[size] = { "-------", " " };
