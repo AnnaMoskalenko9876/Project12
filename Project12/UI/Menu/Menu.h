@@ -8,6 +8,7 @@ void menu()
 
 	do
 	{
+		print_tag();
 		cout << "\t\tChoice of game mode\n";
 		cout << "\t\t-------------------\n";
 		cout << "\t\t3x3\t\t4x4\n";
