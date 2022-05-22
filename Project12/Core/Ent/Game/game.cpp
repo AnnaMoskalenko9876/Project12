@@ -13,6 +13,7 @@ void print_win()
 	cout << "| '--------------' || '--------------' || '--------------' |" << endl;
 	cout << " '----------------'  '----------------'  '----------------' " << endl;
 }
+
 void win(int**& field, int size1)
 {
 	int arr1[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
@@ -38,14 +39,13 @@ void win(int**& field, int size1)
 		print_win();
 	else if (count == 15 && size1 == 15)
 		print_win();
-
 }
 
 void print(int**& field, int size1)
 {
 	if (size1 == 3)
 	{
-		cout << "\t\t\t-------------------" << endl;
+		cout << "\t\t\t/-----------------\\" << endl;
 		for (int y = 0; y < size1; y++)
 		{
 			cout << "\t\t\t|" << setw(3);
@@ -53,11 +53,11 @@ void print(int**& field, int size1)
 				cout << field[y][r] << setw(3) << "|" << setw(3);
 			cout << endl;
 		}
-		cout << "\t\t\t-------------------" << endl;
+		cout << "\t\t\t\\-----------------/" << endl;
 	}
 	else if (size1 == 4)
 	{
-		cout << "\t\t\t-------------------------" << endl;
+		cout << "\t\t\t/-----------------------\\" << endl;
 		for (int y = 0; y < size1; y++)
 		{
 			cout << "\t\t\t|" << setw(3);
@@ -65,8 +65,23 @@ void print(int**& field, int size1)
 				cout << field[y][r] << setw(3) << "|" << setw(3);
 			cout << endl;
 		}
-		cout << "\t\t\t-------------------------" << endl;
+		cout << "\t\t\t\\\-----------------------/" << endl;
 	}
+}
+
+void print_filling()
+{
+	cout << " .----------------.  .----------------.  .----------------.  .----------------. " << endl;
+	cout << "| .--------------. || .--------------. || .--------------. || .--------------. |" << endl;
+	cout << "| |  _________   | || |     _____    | || |   _____      | || |   _____      | |" << endl;
+	cout << "| | |_   ___  |  | || |    |_   _|   | || |  |_   _|     | || |  |_   _|     | |" << endl;
+	cout << "| |   | |_  \\_|  | || |      | |     | || |    | |       | || |    | |       | |" << endl;
+	cout << "| |   |  _|      | || |      | |     | || |    | |   _   | || |    | |   _   | |" << endl;
+	cout << "| |  _| |_       | || |     _| |_    | || |   _| |__/ |  | || |   _| |__/ |  | |" << endl;
+	cout << "| | |_____|      | || |    |_____|   | || |  |________|  | || |  |________|  | |" << endl;
+	cout << "| |              | || |              | || |              | || |              | |" << endl;
+	cout << "| '--------------' || '--------------' || '--------------' || '--------------' |" << endl;
+	cout << " '----------------'  '----------------'  '----------------'  '----------------' " << endl;
 }
 
 void print_tag()
@@ -144,85 +159,115 @@ void print_tag()
 
 }
 
+void print_rules_and_gaming()
+{
+	cout << "<------------------------------RULES OF THE GAME------------------------------>" << endl;
+	cout << "The numbers are already scattered randomly.\nBy clicking on the knuckle, you can move it in the direction of a free cell.\nTry to distribute them in order using the least number of moves." << endl;
+	cout << "<----------------------------------------------------------------------------->" << endl;
+	Sleep(10000);
+	system("cls");
+	cout << "\t\t\t<-------CONTROL------->" << endl;
+	cout << "\t\t\t\t# # # #" << endl;
+	cout << "\t\t\t\t#  W  #" << endl;
+	cout << "\t\t\t\t# # # #" << endl;
+	cout << "\t\t\t# # # #\t\t# # # #" << endl;
+	cout << "\t\t\t#  A  #\t\t#  D  #" << endl;
+	cout << "\t\t\t# # # #\t\t# # # #" << endl;
+	cout << "\t\t\t\t# # # #" << endl;
+	cout << "\t\t\t\t#  S  #" << endl;
+	cout << "\t\t\t\t# # # #" << endl;
+	cout << "\t\t\t<-------------------->" << endl;
+	cout << "\t\t\t    Are you ready?" << endl;
+}
 void print_play()
 {
-	cout << " .----------------.  .----------------.  .----------------.  .----------------. " << endl;
-	cout << "| .--------------. || .--------------. || .--------------. || .--------------. |" << endl;
-	cout << "| |   ______     | || |   _____      | || |      __      | || |  ____  ____  | |" << endl;
-	cout << "| |  |_   __ \\   | || |  |_   _|     | || |     /  \\     | || | |_  _||_  _| | |" << endl;
-	cout << "| |    | |__) |  | || |    | |       | || |    / /\\ \\    | || |   \\ \\  / /   | |" << endl;
-	cout << "| |    |  ___/   | || |    | |   _   | || |   / ____ \\   | || |    \\ \\/ /    | |" << endl;
-	cout << "| |   _| |_      | || |   _| |__/ |  | || | _/ /    \\ \\_ | || |    _|  |_    | |" << endl;
-	cout << "| |  |_____|     | || |  |________|  | || ||____|  |____|| || |   |______|   | |" << endl;
-	cout << "| |              | || |              | || |              | || |              | |" << endl;
-	cout << "| '--------------' || '--------------' || '--------------' || '--------------' |" << endl;
-	cout << "'----------------'  '----------------'  '----------------'  '----------------' " << endl;
+		system("cls");
+		cout << " .----------------.  .----------------.  .----------------.  .----------------. " << endl;
+		cout << "| .--------------. || .--------------. || .--------------. || .--------------. |" << endl;
+		cout << "| |   ______     | || |   _____      | || |      __      | || |  ____  ____  | |" << endl;
+		cout << "| |  |_   __ \\   | || |  |_   _|     | || |     /  \\     | || | |_  _||_  _| | |" << endl;
+		cout << "| |    | |__) |  | || |    | |       | || |    / /\\ \\    | || |   \\ \\  / /   | |" << endl;
+		cout << "| |    |  ___/   | || |    | |   _   | || |   / ____ \\   | || |    \\ \\/ /    | |" << endl;
+		cout << "| |   _| |_      | || |   _| |__/ |  | || | _/ /    \\ \\_ | || |    _|  |_    | |" << endl;
+		cout << "| |  |_____|     | || |  |________|  | || ||____|  |____|| || |   |______|   | |" << endl;
+		cout << "| |              | || |              | || |              | || |              | |" << endl;
+		cout << "| '--------------' || '--------------' || '--------------' || '--------------' |" << endl;
+		cout << " '----------------'  '----------------'  '----------------'  '----------------' " << endl;
+
 }
 
+//sortirovky sdelai
 void computer(int**& field, int size1)
 {
-
 }
 
 void human(int**& field, int size1)
 {
 	int t;
+	char u = 'y', y;
 	bool win = false;
 	bool a = false;
-	do
+	print_rules_and_gaming();
+	cin >> y;
+	if (u == y)
 	{
-		system("cls");
-		print_play();
-		print(field, size1);
-		t = _getch();
-		cout << t;
-		a = false;
-		for (int y = 0; y < size1; y++)
+		do
 		{
-			if (a == true)
-				break;
-			for (int r = 0; r < size1; r++)
+			system("cls");
+			print_play();
+			print(field, size1);
+			t = _getch();
+			cout << t;
+			a = false;
+			for (int y = 0; y < size1; y++)
 			{
-				if (t == 119)
+				if (a == true)
+					break;
+				for (int r = 0; r < size1; r++)
 				{
-					if (field[y][r] == 0 && y != 0)
+					if (t == 119)
 					{
-						a = true;
-						swap(field[y][r], field[y - 1][r]);
-						break;
+						if (field[y][r] == 0 && y != 0)
+						{
+							a = true;
+							swap(field[y][r], field[y - 1][r]);
+							break;
+						}
 					}
-				}
-				else if (t == 115)
-				{
-					if (field[y][r] == 0 && y != size1 - 1)
+					else if (t == 115)
 					{
-						a = true;
-						swap(field[y][r], field[y + 1][r]);
-						break;
+						if (field[y][r] == 0 && y != size1 - 1)
+						{
+							a = true;
+							swap(field[y][r], field[y + 1][r]);
+							break;
+						}
 					}
-				}
-				else if (t == 97)
-				{
-					if (field[y][r] == 0 && r != 0)
+					else if (t == 97)
 					{
-						a = true;
-						swap(field[y][r], field[y][r - 1]);
-						break;
+						if (field[y][r] == 0 && r != 0)
+						{
+							a = true;
+							swap(field[y][r], field[y][r - 1]);
+							break;
+						}
 					}
-				}
-				else if (t == 100)
-				{
-					if (field[y][r] == 0 && r != size1 - 1)
+					else if (t == 100)
 					{
-						a = true;
-						swap(field[y][r], field[y][r + 1]);
-						break;
+						if (field[y][r] == 0 && r != size1 - 1)
+						{
+							a = true;
+							swap(field[y][r], field[y][r + 1]);
+							break;
+						}
 					}
 				}
 			}
-		}
 
-	} while (win != true);
+		} while (win != true);
+	}
+	else
+		exit(0);
 
 
 }
@@ -281,7 +326,7 @@ void manual(int** &field, int size1)
 	{
 		for (int j = 0; j < size1; j++)
 		{
-			/*print_tag();*/
+			print_filling();
 			if (i == size1 - 1 && j == size1 - 1)
 				break;
 			print(field, size1);
@@ -290,6 +335,7 @@ void manual(int** &field, int size1)
 			system("cls");
 		}
 	}
+	system("cls");
 	int a, b = 0;
 	const int size = 2;
 	string arrow[size] = { "-------", " " };
