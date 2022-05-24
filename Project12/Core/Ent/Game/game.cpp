@@ -14,8 +14,9 @@ void print_win()
 	cout << " '----------------'  '----------------'  '----------------' " << endl;
 }
 
-void win(int**& field, int size1)
+bool win(int**& field, int size1)
 {
+	bool win = true;
 	int arr1[3][3] = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 	int arr2[4][4] = { { 1, 2, 3, 4 }, { 5, 6, 7, 8 }, { 9, 10, 11, 12 }, { 13, 14, 15, 0 } };
 	int count = 0;
@@ -23,22 +24,33 @@ void win(int**& field, int size1)
 	{
 		for (int j = 0; j < size1; j++)
 		{
-			if (size1 == 8)
+			if (size1 == 3)
 			{
 				if (field[i][j] == arr1[i][j])
 					count++;
 			}
-			else if (size1 == 15)
+			else if (size1 == 4)
 			{
 				if (field[i][j] == arr2[i][j])
 					count++;
 			}
 		}
 	}
-	if (count == 8 && size1 == 8)
+	size1 = size1 * size1 - 1;
+	if (count == 9 && size1 == 8)
+	{
+		system("cls");
 		print_win();
-	else if (count == 15 && size1 == 15)
+		return win;
+	}
+	else if (count == 16 && size1 == 15)
+	{
+		system("cls");
 		print_win();
+		return win;
+	}
+	else
+		return false;
 }
 
 void print(int**& field, int size1)
@@ -164,7 +176,7 @@ void print_rules_and_gaming()
 	cout << "<------------------------------RULES OF THE GAME------------------------------>" << endl;
 	cout << "The numbers are already scattered randomly.\nBy clicking on the knuckle, you can move it in the direction of a free cell.\nTry to distribute them in order using the least number of moves." << endl;
 	cout << "<----------------------------------------------------------------------------->" << endl;
-	Sleep(10000);
+	//Sleep(10000);
 	system("cls");
 	cout << "\t\t\t<-------CONTROL------->" << endl;
 	cout << "\t\t\t\t# # # #" << endl;
@@ -179,6 +191,7 @@ void print_rules_and_gaming()
 	cout << "\t\t\t<-------------------->" << endl;
 	cout << "\t\t\t    Are you ready?" << endl;
 }
+
 void print_play()
 {
 		system("cls");
@@ -196,28 +209,37 @@ void print_play()
 
 }
 
-//sortirovky sdelai
 void computer(int**& field, int size1)
 {
+	cout << "I'm sorry, I can't write artificial intelligence" << endl;
+	Sleep(10000);
 }
 
 void human(int**& field, int size1)
 {
-	int t;
+	int t, step = 0;
 	char u = 'y', y;
-	bool win = false;
+	bool winer = false;
 	bool a = false;
 	print_rules_and_gaming();
 	cin >> y;
 	if (u == y)
 	{
+		double start_time = clock();
 		do
 		{
 			system("cls");
 			print_play();
 			print(field, size1);
+			/*for (int i = 0; i < size1; i++)
+			{
+				for (int j = 0; j < size1; j++)
+					field[i][j] = i * size1 + j + 1;
+			}
+			field[2][2] = 0;
+			winer = win(field, size1);
+			Sleep(1000);*/
 			t = _getch();
-			cout << t;
 			a = false;
 			for (int y = 0; y < size1; y++)
 			{
@@ -231,6 +253,7 @@ void human(int**& field, int size1)
 						{
 							a = true;
 							swap(field[y][r], field[y - 1][r]);
+							step += 1;
 							break;
 						}
 					}
@@ -240,6 +263,7 @@ void human(int**& field, int size1)
 						{
 							a = true;
 							swap(field[y][r], field[y + 1][r]);
+							step += 1;
 							break;
 						}
 					}
@@ -249,6 +273,7 @@ void human(int**& field, int size1)
 						{
 							a = true;
 							swap(field[y][r], field[y][r - 1]);
+							step += 1;
 							break;
 						}
 					}
@@ -258,13 +283,21 @@ void human(int**& field, int size1)
 						{
 							a = true;
 							swap(field[y][r], field[y][r + 1]);
+							step += 1;
 							break;
 						}
 					}
 				}
 			}
-
-		} while (win != true);
+			winer = win(field, size1);
+		} while (winer != true);
+		print(field, size1);
+		double end_time = clock();
+		double search_time = end_time - start_time;
+		search_time /= 1000;
+		cout << "\t\tTime: " << search_time << "\t\tStep: " << step;
+		Sleep(10000);
+		exit(0);
 	}
 	else
 		exit(0);
@@ -334,6 +367,12 @@ void manual(int** &field, int size1)
 			field[i][j] = checks(field, y, size1, chec);
 			system("cls");
 		}
+	}
+	bool winer = win(field, size1);
+	if (winer == true)
+	{
+		cout << "You are a genius" << endl;
+		exit(0);
 	}
 	system("cls");
 	int a, b = 0;

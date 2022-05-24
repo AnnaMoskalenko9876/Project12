@@ -4,5 +4,6 @@
 #include <conio.h>
 #include <iomanip>
 #include <windows.h>
+#include <ctime>
 using namespace std;
 
