@@ -301,8 +301,6 @@ void human(int**& field, int size1)
 	}
 	else
 		exit(0);
-
-
 }
 
 int checks(int** &field, int a, int size1, bool chec)
@@ -311,7 +309,7 @@ int checks(int** &field, int a, int size1, bool chec)
 	t = (size1 * size1) - 1;
 	bool prov = false;
 	do {
-			if (a > t)
+			if (a > t || a < 0)
 			{
 				prov = false;
 				if (chec == true)
@@ -369,7 +367,7 @@ void manual(int** &field, int size1)
 		}
 	}
 	bool winer = win(field, size1);
-	if (winer == true)
+	if (winer == true)//если ты ввел сразу готовую пятнашку
 	{
 		cout << "You are a genius" << endl;
 		exit(0);
@@ -450,7 +448,7 @@ void computerom(int** &field, int size1)
 	{
 		for (int j = 0; j < size1; j++)
 		{
-			if (i == size1 - 1 && j == size1 - 1)
+			if (i == size1 - 1 && j == size1 - 1)//для пропуска ласт ячейки
 				break;
 			print_tag();
 			print(field, size1);
